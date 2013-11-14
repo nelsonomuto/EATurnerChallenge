@@ -7,3 +7,5 @@
 *.war
 
 *.xml
+
+.idea/libraries/Generated_files.xml

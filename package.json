@@ -9,10 +9,12 @@
     },
     "dependencies": {
         "express": "3.4.x",
-        "mongoskin": "0.6.x"
+        "mongoskin": "0.6.x",
+        "xmlhttprequest": "1.6.x"
     },
     "devDependencies": {
         "node-inspector": "*",
+        "mongodb": "*",
         "grunt": "*",
         "grunt-contrib-jshint": "*"
     },

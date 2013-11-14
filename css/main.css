@@ -1,5 +1,25 @@
 .Filters {
-  margin: 10px; }
+    margin: 10px;
+}
 
 .SearchResultsSection {
-  padding: 20px 0; }
+    padding: 20px 0;
+}
+
+.HiddenDetail {
+    height: 0;
+    overflow: hidden;
+}
+
+#detailPage h5 {
+    text-decoration: underline;
+}
+
+#detailPage .StoryLineHeader {
+    color: green;
+}
+
+#detailPage p.ui-li-desc {
+    white-space: normal;
+    font-size: 1em;
+}

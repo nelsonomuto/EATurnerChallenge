@@ -4,7 +4,6 @@
     <title>EA Turner Challenge | Nelson Omuto</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css">
-    <link rel="stylesheet" href="css/themes.min.css">
     <link rel="stylesheet" href="css/main.css">
 
     <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
@@ -21,49 +20,50 @@
     </div>
 
     <div data-role="content">
-        <div class="Filters">
-            <label for="titleType" class="select">Filter by Genre:</label>
-            <select name="titleType" id="titleType">
-                <!--TODO: should come from service call-->
-                <option value="All">All</option>
-                <option value="Action">Action</option>
-                <option value="Adaptation">Adaptation</option>
-                <option value="Adventure">Adventure</option>
-                <option value="Based-on">Based-on</option>
-                <option value="Biographical">Biographical</option>
-                <option value="Biography">Biography</option>
-                <option value="Biopic">Biopic</option>
-                <option value="Black Comedy">BlackComedy</option>
-                <option value="Comedy">Comedy</option>
-                <option value="Drama">Drama</option>
-                <option value="Historical">Historical</option>
-                <option value="Musical">Musical</option>
-                <option value="Period">Period</option>
-                <option value="Political">Political</option>
-                <option value="Romance">Romance</option>
-                <option value="Sequel">Sequel</option>
-                <option value="Sports">Sports</option>
-                <option value="Teen">Teen</option>
-                <option value="Thriller">Thriller</option>
-            </select>
+        <!--<div class="Filters">-->
+        <!--TODO: Add filter functionality-->
+            <!--<label for="titleType" class="select">Filter by Genre:</label>-->
+            <!--<select name="titleType" id="titleType">-->
+                <!--&lt;!&ndash;TODO: should come from service call&ndash;&gt;-->
+                <!--<option value="All">All</option>-->
+                <!--<option value="Action">Action</option>-->
+                <!--<option value="Adaptation">Adaptation</option>-->
+                <!--<option value="Adventure">Adventure</option>-->
+                <!--<option value="Based-on">Based-on</option>-->
+                <!--<option value="Biographical">Biographical</option>-->
+                <!--<option value="Biography">Biography</option>-->
+                <!--<option value="Biopic">Biopic</option>-->
+                <!--<option value="Black Comedy">BlackComedy</option>-->
+                <!--<option value="Comedy">Comedy</option>-->
+                <!--<option value="Drama">Drama</option>-->
+                <!--<option value="Historical">Historical</option>-->
+                <!--<option value="Musical">Musical</option>-->
+                <!--<option value="Period">Period</option>-->
+                <!--<option value="Political">Political</option>-->
+                <!--<option value="Romance">Romance</option>-->
+                <!--<option value="Sequel">Sequel</option>-->
+                <!--<option value="Sports">Sports</option>-->
+                <!--<option value="Teen">Teen</option>-->
+                <!--<option value="Thriller">Thriller</option>-->
+            <!--</select>-->
 
-            <label for="releaseYear" class="select">Filter by Release Year:</label>
-            <select name="releaseYear" id="releaseYear">
-                <option value="All">All</option>
-                <!--TODO: should come from service call-->
-                <option value="1950">Prior to 1950</option>
-                <option value="1950">1950 - 1960</option>
-                <option value="1950">1960 - 1970</option>
-                <option value="1950">1970 - 1980</option>
-                <option value="1950">1990 - 2000</option>
-                <option value="1950">2000 - 2010</option>
-                <option value="1950">2010 - Current</option>
-            </select>
+            <!--<label for="releaseYear" class="select">Filter by Release Year:</label>-->
+            <!--<select name="releaseYear" id="releaseYear">-->
+                <!--<option value="All">All</option>-->
+                <!--&lt;!&ndash;TODO: should come from service call&ndash;&gt;-->
+                <!--<option value="1950">Prior to 1950</option>-->
+                <!--<option value="1950">1950 - 1960</option>-->
+                <!--<option value="1950">1960 - 1970</option>-->
+                <!--<option value="1950">1970 - 1980</option>-->
+                <!--<option value="1950">1990 - 2000</option>-->
+                <!--<option value="1950">2000 - 2010</option>-->
+                <!--<option value="1950">2010 - Current</option>-->
+            <!--</select>-->
 
-            <a id="clearFilters" data-role="button" data-inline="true" data-ajax="false" data-theme="b" href="">
-                Clear all Filters
-            </a>
-        </div>
+            <!--<a id="clearFilters" data-role="button" data-inline="true" data-ajax="false" data-theme="b" href="">-->
+                <!--Clear all Filters-->
+            <!--</a>-->
+        <!--</div>-->
 
 
         <div class="SearchResultsSection">
@@ -73,7 +73,7 @@
             </ul>
         </div>
         <script id="movieList-template" type="text/x-handlebars-template">
-            {{#each movies}}
+            {{#each titles}}
             <li>
                 <div class="Description">
                     <h3>
@@ -85,9 +85,28 @@
                         {{this.ReleaseYear}}
                     </p>
                     <p class="Genres">
-                        {{#each this.Genres}}{{this}}{{/each}}
+                        Genres: {{#each this.Genres}}{{this}}, {{/each}}
+                    </p>
+
+                    <p class="Keywords">
+                        Keywords: {{#each this.Keywords}}{{this}}, {{/each}}
                     </p>
                 </div>
+                <section class="HiddenDetail">
+                    <div class="Detail">
+                        <h2>{{this.TitleName}} | {{this.ReleaseYear}} {{this.TitleType}}</h2>
+                        <p class="Genres">
+                            {{#each this.Genres}}{{this}}{{/each}}
+                        </p>
+                        <p class="StoryLines">
+                            <h5>Story lines</h5>
+                            {{#each this.Storylines}}
+                            <p class="StoryLineHeader">Type: {{this.Type}} | Language: {{this.Language}}</p>
+                            <p>{{this.Description}}</p>
+                            {{/each}}
+                        </p>
+                    </div>
+                </section>
             </li>
             {{/each}}
         </script>
@@ -108,7 +127,7 @@
         <h1>Detail</h1>
     </div>
 
-    <div data-role="content">
+    <div data-role="content" class="TitleDetail">
     </div>
 
     <div data-role="footer">
@@ -132,14 +151,16 @@
         </h3>
         <p>
             This is a simple jquerymobile SPA front end using handlebars,
-            the http api is based on nodejs and mongodb.
+            the server api is based on nodejs and mongodb (note: no data was found in
+            mongodb://readuser:reader1234@SG-mssmongodev02-874.servers.mongodirector.com:27017/dev-test
+            and therefore using HTTPAPI)
         </p>
 
-        <p>
-            I added two filters for the user to filter the results of their search based on genre and release years.
-            The filters are dropdowns whose values although hardcoded in this example,
-            should ideally come from a service call.
-        </p>
+        <!--<p>-->
+            <!--I added two filters for the user to filter the results of their search based on genre and release years.-->
+            <!--The filters are dropdowns whose values although hardcoded in this example,-->
+            <!--should ideally come from a service call.-->
+        <!--</p>-->
 
     </div>
 

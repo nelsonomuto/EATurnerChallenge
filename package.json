@@ -1,0 +1,30 @@
+{
+    "name": "notifierService",
+    "preferGlobal": true,
+    "version": "0.0.1",
+    "author": "Nelson Omuto <nelsonomuto@gmail.com>",
+    "description": "Node Js backend, Sencha Touch frontend notifier app",
+    "contributors": [
+        {
+            "name": "Kevin Okeyo",
+            "email": "keviyne@gmail.com"
+        }
+    ],
+    "dependencies": null,
+    "optionalDependencies": null,
+    "devDependencies": {
+        "grunt-contrib-nodeunit": "0.1.2",
+        "proxyquire": "~0.4.1",
+        "colors": "*",
+        "js-yaml": "2.0.5",
+        "htmlparser": "1.7.6",
+        "jsdom": "*",
+        "node-inspector": "*",
+        "request": "*",
+        "url": "*",
+        "grunt": "*",
+        "grunt-contrib-jshint": "*",
+        "requirejs": "*",
+        "ahr": "3.0.0-rc.3"
+    }
+}

@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+<head>
+    <title>EA Turner Challenge | Nelson Omuto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css">
+    <link rel="stylesheet" href="css/themes.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+    <script src="js/vendor/handlebars-v1.1.2.js"></script>
+    <script src="js/vendor/jquery-xml2json-plugin.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body>
+<div data-role="page" id="homePage">
+
+    <div data-role="header" data-theme='b'>
+        <h1>Home | EA Turner Challenge | Nelson Omuto</h1>
+    </div>
+
+    <div data-role="content">
+        <div class="Filters">
+            <label for="titleType" class="select">Filter by Genre:</label>
+            <select name="titleType" id="titleType">
+                <!--TODO: should come from service call-->
+                <option value="All">All</option>
+                <option value="Action">Action</option>
+                <option value="Adaptation">Adaptation</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Based-on">Based-on</option>
+                <option value="Biographical">Biographical</option>
+                <option value="Biography">Biography</option>
+                <option value="Biopic">Biopic</option>
+                <option value="Black Comedy">BlackComedy</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Drama">Drama</option>
+                <option value="Historical">Historical</option>
+                <option value="Musical">Musical</option>
+                <option value="Period">Period</option>
+                <option value="Political">Political</option>
+                <option value="Romance">Romance</option>
+                <option value="Sequel">Sequel</option>
+                <option value="Sports">Sports</option>
+                <option value="Teen">Teen</option>
+                <option value="Thriller">Thriller</option>
+            </select>
+
+            <label for="releaseYear" class="select">Filter by Release Year:</label>
+            <select name="releaseYear" id="releaseYear">
+                <option value="All">All</option>
+                <!--TODO: should come from service call-->
+                <option value="1950">Prior to 1950</option>
+                <option value="1950">1950 - 1960</option>
+                <option value="1950">1960 - 1970</option>
+                <option value="1950">1970 - 1980</option>
+                <option value="1950">1990 - 2000</option>
+                <option value="1950">2000 - 2010</option>
+                <option value="1950">2010 - Current</option>
+            </select>
+
+            <a id="clearFilters" data-role="button" data-inline="true" data-ajax="false" data-theme="b" href="">
+                Clear all Filters
+            </a>
+        </div>
+
+
+        <div class="SearchResultsSection">
+            <ul id="movieList" data-role="listview" data-filter="true" data-filter-placeholder="Search for Title..."
+                data-icon="arrow-r"
+                    >
+            </ul>
+        </div>
+        <script id="movieList-template" type="text/x-handlebars-template">
+            {{#each movies}}
+            <li>
+                <div class="Description">
+                    <h3>
+                        <a href="#detailPage">
+                            {{this.TitleName}}
+                        </a>
+                    </h3>
+                    <p class="ReleaseYear">
+                        {{this.ReleaseYear}}
+                    </p>
+                    <p class="Genres">
+                        {{#each this.Genres}}{{this}}{{/each}}
+                    </p>
+                </div>
+            </li>
+            {{/each}}
+        </script>
+    </div>
+
+    <div data-role="footer">
+        <div data-role="navbar" >
+            <ul>
+                <li><a href="#homePage">Home</a></li>
+                <li><a href="#aboutPage">About</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<div data-role="page" id="detailPage" data-add-back-btn="true">
+    <div data-role="header" data-theme='b'>
+        <h1>Detail</h1>
+    </div>
+
+    <div data-role="content">
+    </div>
+
+    <div data-role="footer">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#homePage">Home</a></li>
+                <li><a href="#aboutPage">About</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<div data-role="page" id="aboutPage">
+    <div data-role="header" data-theme='b'>
+        <h1>About</h1>
+    </div>
+
+    <div data-role="content">
+        <h3>
+            EA Turner Challenge | NodeJS MongoDB solution - Nelson Omuto
+        </h3>
+        <p>
+            This is a simple jquerymobile SPA front end using handlebars,
+            the http api is based on nodejs and mongodb.
+        </p>
+
+        <p>
+            I added two filters for the user to filter the results of their search based on genre and release years.
+            The filters are dropdowns whose values although hardcoded in this example,
+            should ideally come from a service call.
+        </p>
+
+    </div>
+
+    <div data-role="footer">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#homePage">Home</a></li>
+                <li><a href="#aboutPage">About</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+
+
+</body>
+</html>

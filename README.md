@@ -7,4 +7,4 @@ I added two filters for the user to filter the results of their search based on 
 The filters are dropdowns whose values although hardcoded in this example,
 should ideally come from a service call.
 
-![Screen shot](https://raw.github.com/nelsonomuto/NotifierApp/master/screenshots/screenshotone.png)
+![Screen shot](https://github.com/nelsonomuto/EATurnerChallenge/blob/master/img/screenshot.png?raw=true)
